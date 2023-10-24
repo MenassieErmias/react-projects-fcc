@@ -15,11 +15,16 @@ const Tour = ({ tour }) => {
           readMore ?
             <p>
               {tour.info}
+              <button onClick={() => setReadMore(false)}>
+                Show Less
+              </button>
             </p>
             :
             <>
-              {tour.info.slice(0, 100)}
-              <button onClick={() => setReadMore(true)}>...</button>
+              {`${tour.info.slice(0, 100)}...`}
+              <button onClick={() => setReadMore(true)}>
+                Show More
+              </button>
             </>
         }
         <button className="delete-btn">

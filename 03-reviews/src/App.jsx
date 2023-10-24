@@ -18,7 +18,16 @@ function App() {
   }
 
   const handleRand = () => {
-    const randIndex = Math.floor(Math.random() * reviews.length);
+    let randIndex = Math.floor(Math.random() * reviews.length);
+    const currIndex = reviews.indexOf(review);
+
+    console.log(randIndex)
+
+    if (randIndex == currIndex && randIndex < reviews.length - 1) {
+      randIndex++;
+    } else if (randIndex == currIndex && randIndex >= reviews.length - 1) {
+      randIndex--;
+    }
     setReview(reviews[randIndex]);
   }
 

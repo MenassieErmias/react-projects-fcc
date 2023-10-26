@@ -28,6 +28,13 @@ function App() {
     }
     console.log(`pressed next,\nprev: ${prevIndex}\ncurr: ${currIndex}`)
   }
+
+  useEffect(() => {
+    let interval = setInterval(
+      handleNext, 10000
+    )
+    return () => clearInterval(interval)
+  }, [currIndex])
   return (
     <section className="section">
       <header className="title">

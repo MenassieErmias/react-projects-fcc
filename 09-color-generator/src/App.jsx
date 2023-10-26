@@ -6,14 +6,16 @@ import Values from 'values.js'
 function App() {
   const [color, setColor] = useState('');
   const [colors, setColors] = useState([]);
+  const [error, setError] = useState(false);
 
   const generateColors = () => {
     try {
       const colorVal = new Values(color);
       setColors(colorVal.all());
+      setError(false);
     } catch (error) {
       console.log(error);
-      alert('Invalid input')
+      setError(true)
     }
 
   }
@@ -28,6 +30,7 @@ function App() {
             id='color'
             value={color}
             onChange={(e) => setColor(e.target.value)}
+            className={error ? 'error' : ''}
           />
           <button className='btn' onClick={generateColors}>Submit</button>
         </div>
@@ -35,7 +38,7 @@ function App() {
           {
             colors.map((color, index) => {
               return (
-                <SingleColor key={index} color={color} />
+                <SingleColor key={index} color={color} index={index} />
               )
             })
           }

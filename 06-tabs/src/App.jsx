@@ -29,10 +29,10 @@ function App() {
       <div className="job-desc">
         <ul className="btn-container">
           {
-            data.map((job) => {
+            data.map((job, index) => {
               return (
-                <li>
-                  <button className="job-btn" onClick={() => setSelectedJob(job.company)}>
+                <li key={index}>
+                  <button className={`job-btn ${job.company === selectedJob && "active-btn"}`} onClick={() => setSelectedJob(job.company)}>
                     {job.company}
                   </button>
                 </li>
@@ -42,10 +42,10 @@ function App() {
         </ul>
         <section className="">
           {
-            data.map((job) => {
+            data.map((job, index) => {
               if (job.company === selectedJob) {
                 return (
-                  <section className="job-info">
+                  <section className="job-info" key={index}>
 
                     <h3>{job.title}</h3>
                     <h4>{job.company}</h4>
@@ -53,9 +53,9 @@ function App() {
 
                     <ul>
                       {
-                        job.duties.map((duty) => {
+                        job.duties.map((duty, index) => {
                           return (
-                            <li className='container'>
+                            <li className='job-desc' key={index}>
                               <FaAngleDoubleRight className='job-icon' />
                               <p>{duty}</p>
                             </li>

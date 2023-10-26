@@ -43,7 +43,7 @@ function App() {
                   key={id}
                   className={
                     data.indexOf(person) === currIndex ? 'activeSlide' :
-                      data.indexOf(person) === prevIndex ? 'prevSlide' :
+                      data.indexOf(person) === prevIndex ? 'lastSlide' :
                         "nextSlide"
                   }
                 >
